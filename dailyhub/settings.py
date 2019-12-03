@@ -79,7 +79,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'dailyhub.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
