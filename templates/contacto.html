@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Contacto - Daily HUB</title>
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+    </head>
+    <body>
+	
+		<header>
+			<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+			<a class="navbar-brand" href="#">Daily HUB</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarCollapse">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="/galeria">Galería</a>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="/contacto">Contacto</a>
+					</li>
+				</ul>
+			</div>
+			</nav>
+		</header>
+		
+        <div class="container">
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+        <main role="main">
+            {% if messages %}
+            <div class="alert alert-success" role="alert" style="margin: 15vh 12vh 0;">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+            {% endif %}
+            <section class="resume-section p-5 p-lg-5 mt-2" id="contact">
+                <div class="my-auto row">
+                    <div class="col-md-2"></div>
+                    <form class="col-md-8 needs-validation" novalidate action="/contacto/" method="POST">
+                        {% csrf_token %}
+                        <h2 class="mb-4 contacto">Suscríbete</h2>
+                        <div class="form-group">
+                            <label for="firstname">Nombres</label>
+                            <input type="text" class="form-control" name="nombre" placeholder="Nombres" required>
+                            <div class="invalid-feedback">Ingresa el nombre.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastname">Apellidos</label>
+                            <input type="text" class="form-control" name="apellido" placeholder="Apellidos" required>
+                            <div class="invalid-feedback">Ingresa el apellido.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" name="email" placeholder="Email" required>
+                            <div class="invalid-feedback">Ingresa un email.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Dirección</label>
+                            <input type="text" class="form-control" name="direccion" placeholder="Dirección" required>
+                            <div class="invalid-feedback">Ingresa una dirección.</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="destino">Intereses</label>
+                            <select name="preferencia" class="form-control" required>
+                                <option value="" selected>Selecciona...</option>
+                                <option value="Conciertos">Conciertos</option>
+                                <option value="Videojuegos">Videojuegos</option>
+                                <option value="Cocina">Cocina</option>
+                                <option value="Informacion Comercial">Información Comercial</option>
+                                <option value="Deportes">Deportes</option>
+								<option value="Vida Social">Vida Social</option>
+                            </select>
+                            <div class="invalid-feedback">Selecciona una opción.</div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>    
+                </div>
+            </section>
+			<br>
+            <footer class="container">
+                <p class="float-right"><small><a href="/accounts/password_reset">Recuperar Contraseña</a></small></p>
+                <p class="float-left" style="margin-right: 5px;">
+                    <a href="/admin">Administración</a>
+                </p>
+                <p>DailyHub&copy; 2019</p>
+            </footer>
+            </main>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> 
+        </div>
+    </body>
+</html>
+<script>
+    // Validación del formulario
+    (function() {
+        'use strict';
+        window.addEventListener('load', () => {
+        // Busca el formulario con la clase que se agrego
+        let forms = document.getElementsByClassName('needs-validation');
+        
+        // Revisa si el formulario es válido
+        let validation = Array.prototype.filter.call(forms, (form) => {
+            form.addEventListener('submit', (event) => {
+            if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            
+            agregarClase(form);
+            }, false);
+        });
+        }, false);
+    })();
+
+    function agregarClase(form){
+        form.classList.add('was-validated');
+    }
+
+    function footerData(){
+        console.log("Presionó el footer.");
+    }
+</script>
